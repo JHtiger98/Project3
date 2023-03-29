@@ -31,28 +31,21 @@
 ### 손목 회전: 정확도 높이기
 <img src="https://user-images.githubusercontent.com/115753833/228266456-6a6537c1-f61f-4929-bb57-cd9b0d3bc43e.png" width="49%">
 
-### 모폴로지 연산을 통한 뼈 도출: TOPHAT 연산 사용
-> - **모폴로지 연산이란?**
->  - 팽창과 수축의 형태학적 변환을 결합 하여 사용
->  - 연산에 도움: 연산 시 형태가 변형되기도 하므로 두 방법을 결합할 경우 오류가 적음
-> <img src="https://user-images.githubusercontent.com/115753833/228267505-8a591782-6b1a-400f-a557-25f6d1a798cd.png" width="300">
-> - **모폴로지 연산에 TOPHAT옵션 사용 이유**
-> - Tophat연산: 
->    - 원본과 Opening연산 결과의 차이
->    - **형태의 변형은 줄이고, 밝기가 크게 튀는 부분만을 강조**
+### 모폴로지 연산을 통한 뼈 도출: TOPHAT 사용
+- **모폴로지 연산이란?**
+  - 팽창과 수축의 형태학적 변환을 결합 하여 사용
+  - 연산에 도움: 연산 시 형태가 변형되기도 하므로 두 방법을 결합할 경우 오류가 적음
+<img src="https://user-images.githubusercontent.com/115753833/228267505-8a591782-6b1a-400f-a557-25f6d1a798cd.png" width="300">
+
+> - **모폴로지 연산에 TOPHAT옵션 사용 이유** 
+>    - 형태의 변형은 줄임
+>    - 밝기가 크게 튀는 부분만을 강조
 >    - 뼈 도출이 가장 잘됨
 > <img src="https://user-images.githubusercontent.com/115753833/228268282-4cfd632a-717a-47c8-bb0c-1bd1bd72bc86.png" width="700">
 
-### 최종 마스크 생성 및 비트연산을 통한 뼈 도출
+### 마스크 생성 및 뼈 도출 (최종 이미지)
 <img src="https://user-images.githubusercontent.com/115753833/228269708-18906552-2d3c-4bd1-b626-f9933e5ae19e.png" width="60%">
 <img src="https://user-images.githubusercontent.com/115753833/228270121-1b37d704-4993-4d33-82e0-4fe52ff81dc0.png" width="60%">
-
-- **히스토그램 균등화: CLAHE**
-  - 좋은 이미지: 히스토그램이 전체영역에 균등하게 분포
-  - 적응형 히스토그램 균등화 CLAHE
-    - 이미지를 작은 블록으로 나눔
-    - 블록별 히스토그램 균일화
-    - 이미지 전체에 히스토그램 균일화 달성
 
 ----------
 ## 이미지 라벨링
@@ -68,7 +61,7 @@
 ### YOLOv5 Fine Tuning
 <img src="https://user-images.githubusercontent.com/115753833/228275594-794ba07d-4a7b-4431-a8a7-c3e2c7b0b9e9.png" width="700">
 
-### Tensorboard로 epochs에 따른 mAP, Precision, Recall 값 시각화**
+### Tensorboard로 epochs에 따른 mAP, Precision, Recall 값 시각화
 <img src="https://user-images.githubusercontent.com/115753833/228276697-5444914b-0f30-469b-9a07-11af5d601db1.png" width="700">
 
 ### 라벨링 결과
@@ -89,18 +82,19 @@
 ### TJNet Fine Tuning
 <img src="https://user-images.githubusercontent.com/115753833/228281257-88ff7ed7-fdbd-477a-bdc9-3f209973a89c.png" width="700">
 
+> - 검증 지표
+>   - MSE: 손실 값으로 평가, 오차의 민감도가 높아 회귀 예측 시 중요한 평가 지표로 사용
+>   - MAE: 오차의 범위를 직관적으로 알기 쉽지만 오차의 민감도가 낮아 보조적인 평가 지표로 사용
+
 ### 최적모델 학습 결과
 <img src="https://user-images.githubusercontent.com/115753833/228281671-3b7770d7-67eb-4494-b969-83701e148986.png" width="700">
-> - 검증 지표
->   - MSE: 손실 값으로 평가를 하게 되며, MSE는 오차의 민감도가 높아 회귀 예측 시 중요한 평가 지표로 사용
->   - MAE: (보조수단) 10진수로 표기 되므로 오차의 범위를 직관적으로 알기 쉬워 보조적인 평가 지표로 사용
 
 ----------
 ## 키 성장 예측
 ### 키 성장 공식
 <img src="https://user-images.githubusercontent.com/115753833/228281899-d44ec0b0-00c2-42d3-9512-d1fe993726bc.png" width="700">
 
-### 예측한 골연령, 성별, 현재나이 데이터 -> 키 성장 공식에 대입
+### 예측한 골연령, 성별, 검사시 나이 데이터 -> 키 성장 공식에 대입
 <img src="https://user-images.githubusercontent.com/115753833/228282259-0e6a1011-2b3b-4e09-ab01-21b8264a5bd4.png" width="700">
 
 ### 히스토그램으로 시각화 하기
