@@ -54,7 +54,7 @@ YOLO는 Fast YOLO보다 110FPS 느리었지만 10mAP 더 정확했으며 속도 
   - Correct: correct class and IOU > .5
   - Localization: correct class, .1 < IOU < .5 
   - Similar: class is similar, IOU > .1
-> YOLO의 Localization error는 다른 error들의 합보다도 큽니다. Fast R-CNN은 YOLO보다 더 적은 Localization error를 범하지만 Background error는 3배가 넘는다. 
+> YOLO의 Localization error는 다른 error들의 합보다도 . Fast R-CNN은 YOLO보다 더 적은 Localization error를 범하지만 Background error는 3배가 넘는다. 
 
 ![image](https://user-images.githubusercontent.com/121841464/228474117-d99a8112-d3cf-4bf4-90e5-d0331d5f01b5.png)
 ![image](https://user-images.githubusercontent.com/121841464/228476940-1a18d3b3-ec6b-4565-8539-005259feb305.png)
