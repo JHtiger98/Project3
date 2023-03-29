@@ -17,8 +17,8 @@
 - 전문의 2명의 골연령 판독 데이터
 - 2017 소아 청소년 성장도표 (출처: 질병관리청)
 
-### 제작환경 및 모듈사용
-<img src="https://user-images.githubusercontent.com/115753833/228258560-2890c929-baa9-430f-8a7f-469528e453a4.png" width='200'>
+### 제작 환경 및 모듈
+> <img src="https://user-images.githubusercontent.com/115753833/228258560-2890c929-baa9-430f-8a7f-469528e453a4.png" width='200'>
 
 ### 프로젝트 진행 순서
 <img src="https://user-images.githubusercontent.com/115753833/228264806-68f26327-9a10-48a0-affe-b869a86b6a55.png" width='700'>
