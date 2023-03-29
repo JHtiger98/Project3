@@ -10,7 +10,7 @@
 
 1. 입력 이미지를 S X S Grid로 나눠 준다.
 
-2. 각각의 Grid cell은 B(Bounding box)와 그에 대한 Confidence score를 갖는다. Confidence score는 Bounding box가를객체를 포함한다는 예측을 얼마나 확신하는지, 그리고 그에 대한 예측이 얼마나 정확할지를 반영한다. 
+2. 각각의 Grid cell은 B(Bounding box)와 그에 대한 Confidence score를 갖는다. Confidence score는 Bounding box가 객체를 포함한다는 예측을 얼마나 확신하는지, 그리고 그에 대한 예측이 얼마나 정확할지를 반영한다. 
 > Confidence Score = Pr(Object) * IOU{pred}^{truth}
 
 3. 각각의 Bounding box는 x, y , w, h와 confidence로 구성된다.
