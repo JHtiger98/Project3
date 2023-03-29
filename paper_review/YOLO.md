@@ -57,5 +57,23 @@ YOLO는 Fast YOLO보다 110FPS 느리었지만 10mAP 더 정확했으며 속도 
 > YOLO의 Localization error는 다른 error들의 합보다도 큽니다. Fast R-CNN은 YOLO보다 더 적은 Localization error를 범하지만 Background error는 3배가 넘는다. 
 
 ![image](https://user-images.githubusercontent.com/121841464/228474117-d99a8112-d3cf-4bf4-90e5-d0331d5f01b5.png)
+![image](https://user-images.githubusercontent.com/121841464/228476940-1a18d3b3-ec6b-4565-8539-005259feb305.png)
 
 YOLO와 R-CNN VOC 2007에서 높은 AP를 보여줬다. 하지만 Picasso와 People-Art 데이터셋에 적용을 했을 때, YOLO는 유사한 AP를 보여줬지만 R-CNN은 AP가 많이 떨어지는 모습을 보였다. 그 이유는, YOLO는 DPM과 마찬가지로 객체의 사이즈와 모양은 물론이고 그 객체와의 관계와 객체가 보통 어디에 나타나는지를 같이 모델링 하기 때문이다. 예술 작품과 현실 이미지는 pixel level은 매우 다르지만, 객체의 크기와 모양이 비슷하므로 YOLO는 여전히 좋은 예측을 할 수 있다.
+
+![image](https://user-images.githubusercontent.com/121841464/228476973-320b2a5e-923c-4034-9592-a1cc343a0f27.png)
+
+YOLO는 빠르고 정확한 detector이므로 Computer vision application에 사용하기에 이상적이다. YOLO를 webcam과 연결하고 실시간으로 detect 해본 결과 한사람을 비행기라고 나타낸 거 외에는 대부분 정확하게 예측된 결과를 확인할 수 있다.
+
+----------
+## Summary
+YOLO 알고리즘은 입력 이미지를 여러 개의 Grid Cell로 나누어, 각 셀에서 객체의 존재 여부와 Bounding box를 예측하고 객체를 분류한다. 이를 통해 객체 탐지와 분류를 동시에 처리하며, 입력 이미지 크기에 상관없이 일정한 처리 속도를 유지한다.<br>
+YOLO 이전의 객체 탐지 모델들은 이미지를 여러 장으로 분할하고 분석했다. 그렇기 때문에 이미지 한장에서 객체 탐지를 해도 실제로는 여러 장의 이미지를 분석하는 것과 같았다. 하지만 YOLO는 이미지 전체를 한 번에 처리하므로 다른 객체 감지 알고리즘보다 빠른 속도를 가지고 객체의 Bounding box와 Class를 동시에 예측하므로 다른 알고리즘보다 정확하다는 장점이 있다.<br>
+논문에서 YOLO의 구조와 작동 방식을 자세히 설명하고, 여러 데이터 셋을 사용하여 여러 다른 객체 탐지 알고리즘과 비교한 실험 결과를 보여준다. 그 결과, YOLO가 다른 모델에 비해 높은 속도와 정확도를 보여준다는 것을 증명한다. 하지만 큰 Localization error로 인해 YOLO는 작은 객체나 밀집한 객체 영역에서는 정확도가 떨어지는 등의 문제점도 있다.<br>
+결론적으로, YOLO는 객체 탐지 분야에서 매우 빠른 속도와 높은 정확도를 보여주는 유망한 알고리즘이라는 것을 알 수 있다.
+
+
+
+
+
+
