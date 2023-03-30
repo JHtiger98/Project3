@@ -2,7 +2,7 @@
 ![image](https://user-images.githubusercontent.com/121841464/228569149-cd5c524e-c23b-43ae-86c8-40578ea4f557.png)
 
 ## 참조한 논문 리뷰
-* 라벨링 기법: [TW3]()
+* 라벨링 기법: [TW3](https://github.com/JHtiger98/Project3/blob/main/paper_review/TW3.md)
 * 객체 탐지 모델: [YOLO](https://github.com/JHtiger98/Project3/blob/main/paper_review/YOLO.md)
 * 골 연령 예측 모델: [TJNet](https://github.com/JHtiger98/Project3/blob/main/paper_review/TJNet.md)
 
