@@ -39,3 +39,21 @@ GP기법은 엑스레이 유사성을 시각적으로 검사하여 표준 아틀
 TJ-Net에는 살짝 다른 구조를 가진 2개의 Inception Residual Module이 있다. **lncRes1**은 다양한 Convolutional kernel 크기를 가진 여러 branches로 구성 되어있다. Multi-scale branches는 1x1 과 3x3 Convolutional kernel을 특별한 방법으로 조합하였다. **lncRes2**는 각각 1x1, 3x3, 1x3, 3x1 사이즈의 Inception branches를 가지고 있다. **lncRes1**과 **lncRes2** 모듈은 각각은 4개의 Multi-scale branches를 가지고 있으며, 1x1, 3x3, 3x1, 5x5, 1x7, 7x1의 조합이다. 아래의 그림은 **IncRes1**의 구조이다.
 
 <img src="https://user-images.githubusercontent.com/121841464/229744052-cce72276-355e-4b1f-9d50-bd1bc3f77d81.png" width="700">
+
+----------
+## Experiments
+### Datasets & Preprocessing
+본 실험은 TJ-Net 모델을 평가하기 위해 **RSNA**와 **Tongji** 데이터셋을 사용하였다. **RSNA** 데이터셋은 12611장의 학습 데이터, 1425장의 검증 데이터, 200장의 테스트 데이터로 구성되어 있다. 하지만 대회가 종료됨에 따라 **RSNA**의 테스트 데이터셋은 더 이상 사용할 수 없었기에, 학습 데이터셋을 0.8 : 0.8 : 0.1 비율로 나누어 학습, 검증, 테스트 데이터로 사용하였다. **Tongji** 데이터셋은 Huazhong 과학기술 대학교의 교습병원인 **Tongji** 병원의 엑스레이 이미지를 사용하였다. 또한, 원본 엑스레이 사진 속 손의 방향을 일관되게 만들기 위해 엑스레이 이미지들을 회전시켰다. 품질이 좋지 않은 엑스레이 사진은 버리고 1385개의 엑스레이 이미지(남자: 768, 여자: 617)를 사용하였다. 너무 작은 이미지는 필요한 세부 사항을 생략할 것이고, 고해상도 이미지는 연구실의 제한된 컴퓨팅 자원의 학습 과정을 지연시킬 수 있다. 이에 따라, 본 실험은 **RSNA**와 **Tongji** 데이터셋을 픽셀 크기로 통일하였다.
+
+### Implementation
+- TJ-Net 개발 환경 및 설정
+  - Python 3.6
+  - Tensorflow 1.7
+  - NVIDIA 2080Ti GPU
+  - ADAM optimizer
+  - Batch size: 16
+
+### Results & Analysis
+TJ-Net 모델의 비교를 위해, 성별 입력 모듈과 분류를 위한 dense 층이 있고 다른 Backbone(e.g. VGG16, ResNet50, InceptionV3,4)을 사용하는 모델을 개발하였다. 실험 결과는 아래의 표와 같다.
+
+![image](https://user-images.githubusercontent.com/121841464/229838042-b136a6df-d673-42a1-9ed2-1b326ccd3153.png)
