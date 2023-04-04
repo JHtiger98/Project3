@@ -35,3 +35,7 @@ GP기법은 엑스레이 유사성을 시각적으로 검사하여 표준 아틀
 5. Sigmoid 활성화 함수가 Spatial attention scale matrix를 출력한다.
 6. Output feature map은 scale matrix와 input features의 곱이다.
 
+### Inception Residual Module
+TJ-Net에는 살짝 다른 구조를 가진 2개의 Inception Residual Module이 있다. **lncRes1**은 다양한 Convolutional kernel 크기를 가진 여러 branches로 구성 되어있다. Multi-scale branches는 1x1 과 3x3 Convolutional kernel을 특별한 방법으로 조합하였다. **lncRes2**는 각각 1x1, 3x3, 1x3, 3x1 사이즈의 Inception branches를 가지고 있다. **lncRes1**과 **lncRes2** 모듈은 각각은 4개의 Multi-scale branches를 가지고 있으며, 1x1, 3x3, 3x1, 5x5, 1x7, 7x1의 조합이다. 아래의 그림은 **IncRes1**의 구조이다.
+
+<img src="https://user-images.githubusercontent.com/121841464/229744052-cce72276-355e-4b1f-9d50-bd1bc3f77d81.png" width="700">
