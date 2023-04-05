@@ -54,6 +54,10 @@ TJ-Net에는 살짝 다른 구조를 가진 2개의 Inception Residual Module이
   - Batch size: 16
 
 ### Results & Analysis
-TJ-Net 모델의 비교를 위해, 성별 입력 모듈과 분류를 위한 dense 층이 있고 다른 Backbone(e.g. VGG16, ResNet50, InceptionV3,4)을 사용하는 모델을 개발하였다. 실험 결과는 아래의 표와 같다.
+우선 RSNA 데이터로 TJ-Net을 훈련시키고 생성된 파라미터들을 Tongji훈련 세트로 Fine-tuning 하였다. 그리고 TJ-Net 모델의 비교를 위해, 성별 입력 모듈과 분류를 위한 dense 층이 있으며 다른 Backbone(e.g. VGG16, ResNet50, InceptionV3,4)을 사용하는 모델을 개발하였다. TJ-Net 모델이 0.41, 0.42년의 MAD, RMSE 값으로 두 값 모두 최상의 결과를 보여주었다.
+> RSNA 데이터셋으로 테스트한 모델 성능 비교표
+<img src="https://user-images.githubusercontent.com/121841464/229838042-b136a6df-d673-42a1-9ed2-1b326ccd3153.png" width="350">
 
-![image](https://user-images.githubusercontent.com/121841464/229838042-b136a6df-d673-42a1-9ed2-1b326ccd3153.png)
+1-3 동결된 블록이 0.36년, 0.551의 MAD, RMSE 값으로 최상의 결과를 보여주었다. 이 결과는, TJ-Net 모델이 방사선 골 연령 예측에 중요한 특징을 포착할 수 있다는 것을 증명하였다.
+> 다양한 동결 단계를 사용한 전이 학습의 비교표
+<img src="https://user-images.githubusercontent.com/121841464/229990134-a58cd734-f8c2-4bce-a63f-18116a63b33c.png" width="500">
