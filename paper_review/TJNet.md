@@ -55,9 +55,25 @@ TJ-Net에는 살짝 다른 구조를 가진 2개의 Inception Residual Module이
 
 ### Results & Analysis
 우선 RSNA 데이터로 TJ-Net을 훈련시키고 생성된 파라미터들을 Tongji훈련 세트로 Fine-tuning 하였다. 그리고 TJ-Net 모델의 비교를 위해, 성별 입력 모듈과 분류를 위한 dense 층이 있으며 다른 Backbone(e.g. VGG16, ResNet50, InceptionV3,4)을 사용하는 모델을 개발하였다. TJ-Net 모델이 0.41, 0.42년의 MAD, RMSE 값으로 두 값 모두 최상의 결과를 보여주었다.
-> RSNA 데이터셋으로 테스트한 모델 성능 비교표
+- RSNA 데이터셋으로 테스트한 모델 성능 비교표
 <img src="https://user-images.githubusercontent.com/121841464/229838042-b136a6df-d673-42a1-9ed2-1b326ccd3153.png" width="350">
 
 1-3 동결된 블록이 0.36년, 0.551의 MAD, RMSE 값으로 최상의 결과를 보여주었다. 이 결과는, TJ-Net 모델이 방사선 골 연령 예측에 중요한 특징을 포착할 수 있다는 것을 증명하였다.
-> 다양한 동결 단계를 사용한 전이 학습의 비교표
+- 다양한 동결 단계를 사용한 전이 학습의 비교표
 <img src="https://user-images.githubusercontent.com/121841464/229990134-a58cd734-f8c2-4bce-a63f-18116a63b33c.png" width="500">
+
+훈련된 모델에 대한 CBAM의 영향을 시각화하기 위해 블록4에서 학습한 활성화된 특징들의 히트맵을 그린 결과, CBAM 활성화맵의 주요 포인트들이 TW기법의 ROI와 거의 일치한 것을 확인 할 수 있었다.
+- **블록4**의 활성화맵 (골연령: 15세, 성별: 남자), **왼쪽: CBAM 없이 학습, 오른쪽: CBAM 학습**
+<img src="https://user-images.githubusercontent.com/121841464/229992972-51976803-f53a-43af-a822-b1a1396036a2.png" width="500">
+
+TJ-Net에 공동 학습(Joint learning)을 추가하면 대부분의 연령에 대해 더 정확한 예측이 가능하다.
+- 예측 오류 분포의 비교, **왼쪽: 블록5의 성별 정보 공동 학습, 오른쪽: 공동 학습 없이 학습**
+<img src="https://user-images.githubusercontent.com/121841464/229994659-00422240-b816-48c2-a9da-4253d7707906.png" width="700">
+
+공동 학습(Joint learning)이 성별 가중치 매트릭스를 더 특별하게 만들어, 골 연령에 대한 성별 input의 패턴에 대한 영향을 더 강화한다는 것을 알 수 있다.
+- **블록6**의 성별 정보 가중치 매트릭스 비교 (검은색=0), **위: 공동 학습 없이 학습, 아래: 공동 학습**
+<img src="https://user-images.githubusercontent.com/121841464/229997832-7b1c972a-b894-4b64-af4c-4fc4359a7b8c.png" width="700">
+
+----------
+## Conclusion
+이 논문은, 자동 방사선 골 연령 평가를 위해 특별히 설계된 딥러닝 신경망인 일명 **TJ-Net**을 제안했다. 어텐션 모듈은 전문가가 탐색한 초점과 유사한 특징을 찾는데 도움을 주고, 공동 성별/연령 학습이 성별 레이블에 대한 연령 조건 예측을 향상시켰다. 결과적으로, TJ-Net은 RSNA, Tongji 데이터셋에서 0.41년, 0.36년의 MAD를 기록하며, 다른 모델의 최첨단 방법보다도 더 좋은 성능을 기록하였다.
